@@ -1,0 +1,33 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.welcome-container {
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #7b1fa2; /* Kolor wiodący */
+}
+
+p {
+  color: #6c757d;
+}
+
+a {
+  color: #7b1fa2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

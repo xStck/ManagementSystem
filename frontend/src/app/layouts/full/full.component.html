@@ -1,0 +1,42 @@
+<div class="main-container">
+  <mat-toolbar class="topbar relative" color="primary">
+    <div class="navbar-header">
+      <button
+        (click)="snav.toggle()"
+        mat-icon-button
+        style="vertical-align: bottom"
+        value="sidebarclosed"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <b>
+        <span style="vertical-align: middle">
+          <mat-icon>storefront</mat-icon>
+        </span>
+      </b>
+      <span fxShow="false" fxShow.gt-xs> Management System </span>
+    </div>
+    <span fxFlex></span>
+    <app-header></app-header>
+  </mat-toolbar>
+  <mat-sidenav-container
+    class="example-sidenav-container"
+  >
+    <mat-sidenav
+      #snav
+      [disableClose]="mobileQuery.matches"
+      [mode]="mobileQuery.matches ? 'side' : 'over'"
+      [opened]="mobileQuery.matches"
+      class="dark-sidebar pl-xs"
+      fixedTopGap="0"
+      id="snav"
+    >
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content class="page-wrapper">
+      <div class="page-content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,56 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <span class="title-center">{{ dialogData.action }} Category</span>
+    <span class="spacer"></span>
+    <button class="mat-dialog-close" mat-dialog-close mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="categoryForm">
+    <div fxFlex fxLayout="column">
+      <div fxLayout="row wrap">
+        <mat-form-field appearance="standard" fxFlex>
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput required type="text"/>
+          <mat-error
+            *ngIf="
+              categoryForm.controls.name.touched &&
+              categoryForm.controls.name.invalid
+            "
+          >
+            <span *ngIf="categoryForm.controls.name.errors.required"
+            >This field is mandatory</span
+            >
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button
+    (click)="handleSubmit()"
+    [disabled]="!(categoryForm.valid && categoryForm.dirty)"
+    color="primary"
+    mat-raised-button
+    type="submit"
+  >
+    <mat-icon>save</mat-icon>
+    {{ action }}
+  </button>
+
+  <button (click)="delete()" *ngIf="dialogAction === 'Edit'" color="accent"
+          mat-dialog-close mat-raised-button>
+    <mat-icon>delete</mat-icon>
+    Delete
+  </button>
+
+  <button color="warn" mat-dialog-close mat-raised-button>
+    <mat-icon>cancel</mat-icon>
+    Close
+  </button>
+</mat-dialog-actions>

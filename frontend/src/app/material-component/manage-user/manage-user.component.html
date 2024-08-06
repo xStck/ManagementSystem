@@ -1,0 +1,47 @@
+<mat-card>
+  <b>
+    <span>Manage Users</span>
+  </b>
+</mat-card>
+
+<hr/>
+<mat-card>
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input #input (keyup)="applyFilter($event)" matInput type="text"/>
+  </mat-form-field>
+</mat-card>
+<hr>
+<div class="responsive_table">
+  <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+    <ng-container matColumnDef="name">
+      <th *matHeaderCellDef mat-header-cell>Name</th>
+      <td *matCellDef="let element" mat-cell>{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th *matHeaderCellDef mat-header-cell>Email</th>
+      <td *matCellDef="let element" mat-cell>{{ element.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="contactNumber">
+      <th *matHeaderCellDef mat-header-cell>Contact Number</th>
+      <td *matCellDef="let element" mat-cell>{{ element.contactNumber }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th *matHeaderCellDef mat-header-cell>Action</th>
+      <td *matCellDef="let element" class="action-link" mat-cell>
+        <mat-slide-toggle
+          (change)="onChange($event.checked, element.id)"
+          [checked]="element.status"
+          color="primary"
+          matTooltip="Activate or Deactivate User"
+        >
+        </mat-slide-toggle>
+      </td>
+    </ng-container>
+    <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+  </table>
+</div>
